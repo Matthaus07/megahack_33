@@ -1,0 +1,2 @@
+class SmallBusiness < ApplicationRecord
+end
