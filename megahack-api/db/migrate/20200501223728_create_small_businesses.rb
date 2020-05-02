@@ -15,7 +15,8 @@ class CreateSmallBusinesses < ActiveRecord::Migration[5.1]
       t.decimal :financial_rating, default: 5.0
       t.string :address_observation
       t.integer :total_ratings, :default => 0
-      t.string :category 
+      t.string :category
+      t.string :photo_url
       t.timestamps
     end
   end

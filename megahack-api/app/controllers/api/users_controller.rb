@@ -20,9 +20,9 @@ class Api::UsersController < ApplicationController
                 username = params[:username]
                 password = params[:password]
 
-                session_token = login(username, password)
+                user_login = login(username, password)
 
-                render json: {session_token: session_token}, status: 200
+                render json: {session_token: user_login[:session_token], id: user_login[:id]}, status: 200
             else
                 user = User.find(params[:id])
 
@@ -53,9 +53,7 @@ class Api::UsersController < ApplicationController
     
     def destroy
         begin
-            session_token = params[:session_token]
-
-            user = User.find_by(session_token: session_token)
+            user = User.find(params[:id])
             user.update(session_token: "") if !user.nil?
 
             render status: 200
@@ -81,9 +79,8 @@ class Api::UsersController < ApplicationController
             user.update(session_token: session_token)
         end
 
-        return session_token        
+        return {id: user[:id], session_token: session_token}
     end
-    
 
     def user_params
         params.permit(:CPF, :CEP, :username, :first_name, :last_name, :city, :st_number, :street, :state, :address_observation)
