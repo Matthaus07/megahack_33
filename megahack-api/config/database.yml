@@ -29,8 +29,16 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: megahack
+  username: megahack
+  password: ZVGSRY9ipXkgOyDIdpvX
+  pool: 30
+  port: 3306
+  min_messages: warning
+  host: megahack.cbc1phcdhzrw.sa-east-1.rds.amazonaws.com
+  timeout: 5000
 
 joao:
   adapter: mysql2
