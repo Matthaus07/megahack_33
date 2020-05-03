@@ -4,10 +4,15 @@ class Api::UsersController < ApplicationController
             User.transaction do
                 user = User.new(user_params)
                 user.password_hash = BCrypt::Password.create(params[:password])
+                if !user.valid?
+                    raise MegaExceptions::ExistingRecord
+                end
                 user.save!
             end
 
             render status: 200
+        rescue MegaExceptions::ExistingRecord
+            render status: 409
         rescue => e
             Rails.logger.error e.message
             Rails.logger.error e.backtrace.join("\n")

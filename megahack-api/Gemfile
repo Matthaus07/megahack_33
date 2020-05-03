@@ -14,9 +14,12 @@ gem 'rails', '~> 5.1.7'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'carrierwave'
+gem 'carrierwave-base64'
 gem 'mysql2'
 gem 'acts_as_paranoid'
+gem 'aws-sdk'
+gem 'fog-aws'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

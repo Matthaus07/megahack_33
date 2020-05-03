@@ -29,16 +29,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
-  encoding: utf8
+  url: <%= ENV['DATABASE_URL'] %>
   database: megahack
-  username: megahack
-  password: ZVGSRY9ipXkgOyDIdpvX
-  pool: 30
-  port: 3306
-  min_messages: warning
-  host: megahack.cbc1phcdhzrw.sa-east-1.rds.amazonaws.com
-  timeout: 5000
 
 joao:
   adapter: mysql2
