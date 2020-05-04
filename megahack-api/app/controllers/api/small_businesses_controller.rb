@@ -72,23 +72,7 @@ class Api::SmallBusinessesController < ApplicationController
                     raise MegaExceptions::UnknowUser
                 end
     
-                render json: {
-                    :CNPJ => user[:CNPJ],
-                    :CEP => user[:CEP],
-                    :username => user[:username],
-                    :name => user[:name],
-                    :city => user[:city],
-                    :st_number => user[:st_number],
-                    :street => user[:street],
-                    :state => user[:state],
-                    :address_observation => user[:address_observation],
-                    :average_rating => user[:average_rating],
-                    :total_ratings => user[:total_ratings],
-                    :photo_url => user[:photo_url],
-                    :category => user[:category],
-                    :financial_rating => user[:financial_rating],
-                    :phoot_url => user.get_photo_url
-                }, status: 200
+                render json: user.formatted_json, status: 200
             end
         rescue => e
             Rails.logger.error e.message
@@ -153,6 +137,6 @@ class Api::SmallBusinessesController < ApplicationController
     end
 
     def small_business_params
-        params.permit(:CNPJ, :CEP, :username, :name, :city, :st_number, :street, :state, :address_observation, :category, :photo_url)
+        params.permit(:CNPJ, :CEP, :username, :company_name, :trading_name, :city, :st_number, :street, :state, :address_observation, :category, :photo_url)
     end
 end

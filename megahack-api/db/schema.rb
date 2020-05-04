@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200501232103) do
+ActiveRecord::Schema.define(version: 20200504021801) do
 
   create_table "enterprises", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "CNPJ"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20200501232103) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "description"
-    t.decimal "price", precision: 10
+    t.float "price", limit: 24
     t.string "photo_url"
     t.integer "quantity"
     t.datetime "deleted_at"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20200501232103) do
     t.string "CNPJ"
     t.string "username"
     t.string "password_hash"
-    t.string "name"
+    t.string "trading_name"
     t.string "session_token"
     t.string "street"
     t.string "CEP"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20200501232103) do
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "subcategory"
+    t.string "company_name"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 20200501232103) do
     t.string "state"
     t.string "st_number"
     t.string "address_observation"
+    t.integer "gender"
   end
 
 end
